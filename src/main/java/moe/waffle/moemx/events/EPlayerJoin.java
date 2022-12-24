@@ -48,8 +48,8 @@ public class EPlayerJoin implements Listener {
 
             String[] splitMsg = fullString.split(System.lineSeparator());
 
-            for (int i = 0; i < splitMsg.length; i++) {
-                e.getPlayer().sendMessage(splitMsg[i]);
+            for (String s : splitMsg) {
+                e.getPlayer().sendMessage(s);
             }
         } catch (IOException err) {
             Bukkit.getLogger().severe(err.toString());

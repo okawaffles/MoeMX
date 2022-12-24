@@ -1,7 +1,10 @@
 package moe.waffle.moemx;
 
 import moe.waffle.moemx.commands.CmdFly;
+import moe.waffle.moemx.commands.CmdMoeMX;
+import moe.waffle.moemx.events.EPlayerChat;
 import moe.waffle.moemx.events.EPlayerQuit;
+import moe.waffle.moemx.utils.CommandHelper;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import static moe.waffle.moemx.utils.Configuration.*;
@@ -16,10 +19,10 @@ public final class MoeMX extends JavaPlugin {
         // move to event helper java class eventually...
         new EPlayerJoin(this);
         new EPlayerQuit(this);
+        new EPlayerChat(this);
 
-        // register commands; move to a different file soon.
-        //this.getCommand("seen").setExecutor(new CmdSeen()); to be finished
-        this.getCommand("fly").setExecutor(new CmdFly());
+        // register commands in CommandHelper.java
+        CommandHelper.RegisterCommands(this);
 
         Bukkit.getLogger().info("MoeMX Enabled.");
     }

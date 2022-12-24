@@ -7,10 +7,27 @@ authors: [ okawaffles ]
 description: A bundle of helpful features for customization and QoL.
 website: https://modrinth.com/mod/moemx
 commands:
-  #seen:
-  #  usage: seen <player>
-  #  description: See when a player was last online
+  moemx:
+    usage: moemx [reload]
+    permission: moemx.info
+    description: Get info or reload MoeMX config.
   fly:
     usage: fly
     permission: moemx.fly
-    description: Enable/disable flying
+    description: Enable/disable flying.
+  gms:
+    usage: gms
+    permission: moemx.gms
+    description: Quickly switch your gamemode to survival.
+  gmc:
+    usage: gmc
+    permission: moemx.gmc
+    description: Quickly switch your gamemode to creative.
+  gmsp:
+    usage: gmsp
+    permission: moemx.gmsp
+    description: Quickly switch your gamemode to spectator.
+  gma:
+    usage: gma
+    permission: moemx.gma
+    description: Quickly switch your gamemode to adventure.
