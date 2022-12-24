@@ -1,0 +1,16 @@
+name: MoeMX
+version: '${project.version}'
+main: moe.waffle.moemx.MoeMX
+api-version: 1.19
+prefix: MoeMX
+authors: [ okawaffles ]
+description: A bundle of helpful features for customization and QoL.
+website: https://modrinth.com/mod/moemx
+commands:
+  #seen:
+  #  usage: seen <player>
+  #  description: See when a player was last online
+  fly:
+    usage: fly
+    permission: moemx.fly
+    description: Enable/disable flying

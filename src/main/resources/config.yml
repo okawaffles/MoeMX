@@ -1,0 +1,16 @@
+# Customization options
+customize:
+  # Custom player join and leave messages
+  joinLeaveMessages:
+    enabled: true
+    # Use %s to specify where the player name should go.
+    firstJoinMessage: "&3⇒ &8Welcome to the server, &3%s&8!"
+    joinMessage: "&3⇒ &8Welcome back, &3%s&8!"
+    leaveMessage: "&3⇐ &8See you later, &3%s&8!"
+
+  # Displays a custom message to a player when they join
+  # Stored in MoeMX/motd.txt. You can use color/formatting codes similar to join messages.
+  # @player = Player name
+  # more arguments will come soon.
+  motd:
+    enabled: true

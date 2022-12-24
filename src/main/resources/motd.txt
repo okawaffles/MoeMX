@@ -1,0 +1,2 @@
+&3Welcome to the server, &9@player&3!
+&3We hope you enjoy your time here!
