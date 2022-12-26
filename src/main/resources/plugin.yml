@@ -31,3 +31,7 @@ commands:
     usage: gma
     permission: moemx.gma
     description: Quickly switch your gamemode to adventure.
+  heal:
+    usage: heal [player]
+    permission: moemx.heal
+    description: Heal yourself or others.

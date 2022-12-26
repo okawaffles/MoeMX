@@ -16,12 +16,6 @@ public class Configuration {
         cfg = plugin.getConfig();
         plg = plugin;
 
-        // defaults ; i dont think we need this?
-        /*cfg.addDefault("customize.joinLeaveMessages.enabled", true);
-        cfg.addDefault("customize.joinLeaveMessages.firstJoinMessage", "&8Welcome to the server, &3%s&8!");
-        cfg.addDefault("customize.joinLeaveMessages.joinMessage", "&8Welcome back, &3%s&8!");
-        cfg.addDefault("customize.joinLeaveMessages.leaveMessage", "&8See you later, &3%s&8!");*/
-
         // save default cfg
         plugin.saveDefaultConfig();
 
