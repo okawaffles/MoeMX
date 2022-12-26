@@ -44,7 +44,7 @@ public class EPlayerJoin implements Listener {
         try {
             File motdFile = new File(plg.getDataFolder(), "motd.txt");
             String motd = Files.readString(Paths.get(motdFile.getAbsolutePath()));
-            String fullString = ChatColorFormatter.FormatToChatColors(motd.replaceAll("@player", playerName));
+            String fullString = ChatColorFormatter.FormatToChatColors(motd.replaceAll("\\{player\\3}", playerName));
 
             String[] splitMsg = fullString.split(System.lineSeparator());
 

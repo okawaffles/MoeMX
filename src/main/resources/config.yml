@@ -10,7 +10,7 @@ customize:
 
   # Displays a custom message to a player when they join
   # Stored in MoeMX/motd.txt. You can use color/formatting codes similar to join messages.
-  # @player = Player name
+  # {player} = Player name
   # more arguments will come soon.
   motd:
     enabled: true
