@@ -13,5 +13,7 @@ public class CommandHelper {
         plugin.getCommand("gma").setExecutor(new CmdGma());
         plugin.getCommand("gmsp").setExecutor(new CmdGmsp());
         plugin.getCommand("heal").setExecutor(new CmdHeal());
+        plugin.getCommand("spawn").setExecutor(new CmdSpawn());
+        plugin.getCommand("tpreq").setExecutor(new CmdTpReq());
     }
 }

@@ -35,3 +35,11 @@ commands:
     usage: heal [player]
     permission: moemx.heal
     description: Heal yourself or others.
+  spawn:
+    usage: spawn
+    permission: moemx.spawn
+    description: Go to the world's spawn point.
+  tpreq:
+    usage: tpreq <player>
+    permission: moemx.tpreq
+    description: Request to teleport to another player.
