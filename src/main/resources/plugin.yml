@@ -43,3 +43,11 @@ commands:
     usage: tpreq <player>
     permission: moemx.tpreq
     description: Request to teleport to another player.
+  tpa:
+    usage: tpa
+    permission: moemx.tpreq.accept
+    description: Accept a teleport request.
+  tpd:
+    usage: tpd
+    permission: moemx.tpreq.deny
+    description: Deny a teleport request.
