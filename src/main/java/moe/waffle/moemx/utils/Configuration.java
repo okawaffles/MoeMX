@@ -36,7 +36,6 @@ public class Configuration {
 
     public static void reloadConfig() {
         cfg = plg.getConfig();
-        WarpsHelper.SaveWarpsToFile();
         WarpsHelper.LoadWarpsFromFile();
     }
 }

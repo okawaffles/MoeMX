@@ -20,6 +20,7 @@ public class CmdCreateWarp implements CommandExecutor {
         Player self = Bukkit.getPlayer(sender.getName());
         Location warp = self.getLocation();
         WarpsHelper.CreateNewWarp(args[0], warp);
+        self.sendMessage(ChatColor.DARK_GRAY + "Created new warp " + ChatColor.DARK_AQUA + args[0] + ChatColor.DARK_GRAY + "!");
 
         return true;
     }

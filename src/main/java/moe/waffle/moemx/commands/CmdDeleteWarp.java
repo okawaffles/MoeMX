@@ -18,6 +18,7 @@ public class CmdDeleteWarp implements CommandExecutor {
         }
 
         WarpsHelper.DeleteWarp(args[0]);
+        sender.sendMessage(ChatColor.DARK_GRAY + "Deleted warp " + ChatColor.DARK_AQUA + args[0] + ChatColor.DARK_GRAY + "!");
 
         return true;
     }

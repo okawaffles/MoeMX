@@ -25,6 +25,7 @@ public class CmdWarp implements CommandExecutor {
 
         Player self = Bukkit.getPlayer(sender.getName());
         self.teleport(warp);
+        self.sendMessage(ChatColor.DARK_GRAY + "Teleporting you to " + ChatColor.DARK_AQUA + args[0] + ChatColor.DARK_GRAY + "...");
 
         return true;
     }
