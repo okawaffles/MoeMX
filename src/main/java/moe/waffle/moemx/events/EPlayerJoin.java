@@ -24,19 +24,18 @@ public class EPlayerJoin implements Listener {
 
     @EventHandler
     public static void OnPlayerJoin(PlayerJoinEvent e) {
-        if (!cfg.getBoolean("customize.joinLeaveMessages.enabled")) return;
+        if (cfg.getBoolean("customize.joinLeaveMessages.enabled")) {
+            String playerName = e.getPlayer().getName();
+            String colorFormatted;
 
-        String playerName = e.getPlayer().getName();
-        String colorFormatted;
+            // switch message if first play
+            if (e.getPlayer().hasPlayedBefore())
+                colorFormatted = ChatColorFormatter.FormatToChatColors(Objects.requireNonNull(cfg.getString("customize.joinLeaveMessages.joinMessage")));
+            else
+                colorFormatted = ChatColorFormatter.FormatToChatColors(Objects.requireNonNull(cfg.getString("customize.joinLeaveMessages.firstJoinMessage")));
 
-        // switch message if first play
-        if (e.getPlayer().hasPlayedBefore())
-            colorFormatted = ChatColorFormatter.FormatToChatColors(Objects.requireNonNull(cfg.getString("customize.joinLeaveMessages.joinMessage")));
-        else
-            colorFormatted = ChatColorFormatter.FormatToChatColors(Objects.requireNonNull(cfg.getString("customize.joinLeaveMessages.firstJoinMessage")));
-
-        e.setJoinMessage(String.format(colorFormatted, playerName));
-
+            e.setJoinMessage(String.format(colorFormatted, playerName));
+        }
 
         // send MOTD to player if enabled in config.
         if (!cfg.getBoolean("customize.motd.enabled")) return;
