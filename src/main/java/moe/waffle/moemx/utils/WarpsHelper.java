@@ -2,7 +2,6 @@ package moe.waffle.moemx.utils;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.World;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -15,7 +14,26 @@ public class WarpsHelper {
     private static HashMap<String, Location> warps = new HashMap<String, Location>();
     private static JavaPlugin plg;
 
-    public boolean LoadWarpsFromFile() {
+    public static void CreateNewWarp(String name, Location loc) {
+        warps.put(name, loc);
+    }
+
+    public static void DeleteWarp(String name) {
+        try {
+            warps.remove(name);
+        } catch (Exception ex) {
+            plg.getLogger().info("Didn't delete any warp since the name didn't exist in the HashMap.");
+        }
+    }
+
+    public static Location GetWarp(String name) {
+        try {
+            return warps.get(name);
+        } catch (Exception ex) {
+            return null;
+        }
+    }
+    public static void LoadWarpsFromFile() {
         File warpf = new File(plg.getDataFolder(), "warps.yml");
         YamlConfiguration config = new YamlConfiguration();
 
@@ -23,19 +41,32 @@ public class WarpsHelper {
             config.load(warpf);
             Set<String> keys = config.getKeys(false);
             for (String key : keys) {
-                World world = Bukkit.getWorld(config.get(key + ".world").toString());
-                Location loc = new Location(world,
-                        Double.parseDouble(config.get(key + ".x").toString()),
-                        Double.parseDouble(config.get(key + ".y").toString()),
-                        Double.parseDouble(config.get(key + ".z").toString()));
+                Location loc = (Location) config.get(key);
 
                 warps.put(key, loc);
             }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
 
-        return true;
+    public static Set<String> ListWarps() {
+        return warps.keySet();
+    }
+
+    public static void SaveWarpsToFile() {
+        File warpf = new File(plg.getDataFolder(), "warps.yml");
+        YamlConfiguration config = new YamlConfiguration();
+
+        try {
+            for (String key : warps.keySet()) {
+                config.set(key, warps.get(key));
+            }
+
+            config.save(warpf);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     public static void RunFirstTimeSetup(JavaPlugin plugin) {
@@ -56,5 +87,7 @@ public class WarpsHelper {
             plugin.getLogger().severe("Couldn't create warps.yml file! The warp command will not work!");
             err.printStackTrace();
         }
+
+        LoadWarpsFromFile();
     }
 }

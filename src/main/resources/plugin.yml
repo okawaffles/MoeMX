@@ -51,3 +51,19 @@ commands:
     usage: tpd
     permission: moemx.tpreq.deny
     description: Deny a teleport request.
+  warp:
+    usage: warp <name>
+    permission: moemx.warp
+    description: Teleport to a warp.
+  createwarp:
+    usage: createwarp <name>
+    permission: moemx.warp.create
+    description: Create a warp.
+  deletewarp:
+    usage: deletewarp <name>
+    permission: moemx.warp.delete
+    description: Delete a warp.
+  warplist:
+    usage: warplist
+    permission: moemx.warp.list
+    description: List all warps.

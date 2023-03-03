@@ -2,6 +2,7 @@ package moe.waffle.moemx.utils;
 
 import moe.waffle.moemx.MoeMX;
 import moe.waffle.moemx.utils.WarpsHelper;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -24,7 +25,8 @@ public class Configuration {
         // save motd (thanks chatgpt for helping me with this)
         InputStream is = MoeMX.class.getResourceAsStream("/motd.txt");
         File file = new File(plugin.getDataFolder(), "motd.txt");
-        plugin.saveResource("motd.txt", false);
+        if (!file.exists())
+            plugin.saveResource("motd.txt", false);
 
     }
 
@@ -34,5 +36,7 @@ public class Configuration {
 
     public static void reloadConfig() {
         cfg = plg.getConfig();
+        WarpsHelper.SaveWarpsToFile();
+        WarpsHelper.LoadWarpsFromFile();
     }
 }

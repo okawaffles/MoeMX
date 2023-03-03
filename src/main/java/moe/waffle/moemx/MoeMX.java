@@ -1,7 +1,6 @@
 package moe.waffle.moemx;
 
-import moe.waffle.moemx.commands.CmdFly;
-import moe.waffle.moemx.commands.CmdMoeMX;
+import moe.waffle.moemx.utils.WarpsHelper;
 import moe.waffle.moemx.events.EPlayerChat;
 import moe.waffle.moemx.events.EPlayerQuit;
 import moe.waffle.moemx.utils.CommandHelper;
@@ -30,6 +29,8 @@ public final class MoeMX extends JavaPlugin {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
+        Bukkit.getLogger().info("Saving and shutting down MoeMX...");
+        WarpsHelper.SaveWarpsToFile();
         Bukkit.getLogger().info("MoeMX Disabled. Thanks for using MoeMX!");
     }
 }

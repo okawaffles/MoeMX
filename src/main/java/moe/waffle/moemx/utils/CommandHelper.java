@@ -17,5 +17,9 @@ public class CommandHelper {
         plugin.getCommand("tpreq").setExecutor(new CmdTpReq());
         plugin.getCommand("tpa").setExecutor(new CmdTpa());
         plugin.getCommand("tpd").setExecutor(new CmdTpd());
+        plugin.getCommand("warp").setExecutor(new CmdWarp());
+        plugin.getCommand("createwarp").setExecutor(new CmdCreateWarp());
+        plugin.getCommand("deletewarp").setExecutor(new CmdDeleteWarp());
+        plugin.getCommand("warplist").setExecutor(new CmdWarplist());
     }
 }
