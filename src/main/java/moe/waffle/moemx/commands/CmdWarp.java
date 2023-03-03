@@ -12,6 +12,7 @@ import org.bukkit.entity.Player;
 public class CmdWarp implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (!(sender instanceof Player)) return false;
         if (args.length == 0) {
             sender.sendMessage(ChatColor.DARK_GRAY + "[!] Please supply a warp name!");
             return true;

@@ -11,6 +11,7 @@ import org.bukkit.entity.Player;
 public class CmdSpawn implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (!(sender instanceof Player)) return false;
         // get the main world's spawnpoint. this wont be a permanent solution though.
         Location spawnPoint = Bukkit.getServer().getWorlds().get(0).getSpawnLocation();
         sender.sendMessage(ChatColor.DARK_GRAY + "The spawnpoint of this world is " + ChatColor.DARK_AQUA + "X:" + Math.round(spawnPoint.getX()) + " Y:" + Math.round(spawnPoint.getX()) + ChatColor.DARK_GRAY + ".");

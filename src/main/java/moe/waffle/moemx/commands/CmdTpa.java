@@ -11,6 +11,7 @@ import org.bukkit.entity.Player;
 public class CmdTpa implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (!(sender instanceof Player)) return false;
         Player from = TpRequestHelper.getRequestFor(Bukkit.getPlayer(sender.getName()));
 
         if (from == null) {

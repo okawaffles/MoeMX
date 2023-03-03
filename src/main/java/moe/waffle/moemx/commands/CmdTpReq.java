@@ -11,6 +11,7 @@ import org.bukkit.entity.Player;
 public class CmdTpReq implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (!(sender instanceof Player)) return false;
         // check if they didn't provide a player
         if (args.length == 0) {
             sender.sendMessage(ChatColor.DARK_GRAY +""+ ChatColor.ITALIC + "[!] Please provide a player!");
