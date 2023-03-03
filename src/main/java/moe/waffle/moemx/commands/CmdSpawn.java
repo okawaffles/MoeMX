@@ -13,7 +13,7 @@ public class CmdSpawn implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         // get the main world's spawnpoint. this wont be a permanent solution though.
         Location spawnPoint = Bukkit.getServer().getWorlds().get(0).getSpawnLocation();
-        sender.sendMessage(ChatColor.DARK_GRAY + "The spawnpoint of this world is" + ChatColor.DARK_AQUA + "X:" + Math.round(spawnPoint.getX()) + " Y:" + Math.round(spawnPoint.getX()) + ChatColor.DARK_GRAY + ".");
+        sender.sendMessage(ChatColor.DARK_GRAY + "The spawnpoint of this world is " + ChatColor.DARK_AQUA + "X:" + Math.round(spawnPoint.getX()) + " Y:" + Math.round(spawnPoint.getX()) + ChatColor.DARK_GRAY + ".");
 
         // wish we could just do sender.teleport();
         Player executor = Bukkit.getPlayer(sender.getName());
