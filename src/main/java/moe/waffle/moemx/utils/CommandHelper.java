@@ -21,5 +21,6 @@ public class CommandHelper {
         plugin.getCommand("createwarp").setExecutor(new CmdCreateWarp());
         plugin.getCommand("deletewarp").setExecutor(new CmdDeleteWarp());
         plugin.getCommand("warplist").setExecutor(new CmdWarplist());
+        plugin.getCommand("lastdeath").setExecutor(new CmdLastDeath());
     }
 }

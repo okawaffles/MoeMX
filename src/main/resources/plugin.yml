@@ -67,3 +67,7 @@ commands:
     usage: warplist
     permission: moemx.warp.list
     description: List all warps.
+  lastdeath:
+    usage: lastdeath
+    permission: moemx.lastdeath
+    description: Get your last death coordinates.
