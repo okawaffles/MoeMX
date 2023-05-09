@@ -21,7 +21,7 @@ public class CmdLastDeath implements CommandExecutor {
             return true;
         } else {
             Location l = getPlayerLastDeath(p);
-            sender.sendMessage(ChatColor.DARK_GRAY + "Your last death point was at X: " + ChatColor.AQUA + round(l.getX()) + ChatColor.DARK_GRAY + " Y: " + ChatColor.AQUA + round(l.getY()) + ChatColor.DARK_GRAY + " Z: "+ ChatColor.AQUA + round(l.getZ()));
+            sender.sendMessage(ChatColor.DARK_GRAY + "Your last death point was at X: " + ChatColor.DARK_AQUA + round(l.getX()) + ChatColor.DARK_GRAY + " Y: " + ChatColor.DARK_AQUA + round(l.getY()) + ChatColor.DARK_GRAY + " Z: "+ ChatColor.DARK_AQUA + round(l.getZ()));
         }
         return true;
     }
