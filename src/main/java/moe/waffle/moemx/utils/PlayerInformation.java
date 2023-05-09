@@ -13,6 +13,7 @@ public class PlayerInformation {
     public static HashMap<Player, Location> previousLocations = new HashMap<Player, Location>();
     public static void setPlayerLastDeath(Player p, Location l) {
         deathLocations.put(p, l);
+        previousLocations.put(p, l);
     }
     public static boolean checkPlayerDeath(Player p) {
         return deathLocations.containsKey(p);
@@ -26,7 +27,8 @@ public class PlayerInformation {
     public static void setPreviousLocation(Player p, Location l) {
         previousLocations.put(p, l);
     }
-    public static Location getPreviousLocation(Player p, Location l) {
-        return previousLocations.getOrDefault(p, p.getBedSpawnLocation());
+    public static Location getPreviousLocation(Player p) {
+        Location bed = p.getBedSpawnLocation();
+        return previousLocations.getOrDefault(p, (bed != null) ? bed : p.getLocation() );
     }
 }

@@ -71,3 +71,7 @@ commands:
     usage: lastdeath
     permission: moemx.lastdeath
     description: Get your last death coordinates.
+  back:
+    usage: back
+    permission: moemx.back
+    description: Teleport to your last location.
