@@ -1,5 +1,6 @@
 package moe.waffle.moemx;
 
+import moe.waffle.moemx.events.EPlayerDeath;
 import moe.waffle.moemx.utils.WarpsHelper;
 import moe.waffle.moemx.events.EPlayerChat;
 import moe.waffle.moemx.events.EPlayerQuit;
@@ -19,6 +20,7 @@ public final class MoeMX extends JavaPlugin {
         new EPlayerJoin(this);
         new EPlayerQuit(this);
         new EPlayerChat(this);
+        new EPlayerDeath(this);
 
         // register commands in CommandHelper.java
         CommandHelper.RegisterCommands(this);
