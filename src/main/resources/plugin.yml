@@ -74,4 +74,12 @@ commands:
   back:
     usage: back
     permission: moemx.back
-    description: Teleport to your last location.
+    description: Teleport to your last location before a teleport, or your bed (if available), otherwise it does nothing.
+  home:
+    usage: home
+    permission: moemx.home
+    description: Teleport to your home or your bed.
+  sethome:
+    usage: sethome
+    permission: moemx.home.set
+    description: Set your home.
