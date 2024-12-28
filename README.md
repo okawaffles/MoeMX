@@ -3,7 +3,7 @@
 Current supported version: **Spigot 1.19.x**
 
 ## Why?
-I like Essentials and the commands that it provides but as of recently they aren't being very nice to players who do not want to use Mojang's stupid chat encryption. So I made the stuff that I want myself.
+I like Essentials and the commands that it provides, but as of recently, I don't enjoy the path they are taking with their plugin. So I made the stuff that I want myself.
 
 ## Features so far:
 - Warps
