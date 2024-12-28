@@ -35,6 +35,8 @@ public class CmdTpReq implements CommandExecutor {
         // if all passes, send a request
         TpRequestHelper.CreateRequest(toSend, self);
 
+        self.sendMessage(ChatColor.DARK_GRAY + "Sent a teleport request to " + ChatColor.DARK_AQUA + toSend.getName() + ChatColor.DARK_GRAY + ".");
+
         toSend.sendMessage(ChatColor.DARK_AQUA + sender.getName() + ChatColor.DARK_GRAY + " would like to teleport to you.");
         toSend.sendMessage(ChatColor.DARK_GRAY + "Type '" + ChatColor.DARK_AQUA + "/tpa" + ChatColor.DARK_GRAY + "' to accept, or '" + ChatColor.DARK_AQUA + "/tpd" + ChatColor.DARK_GRAY + "' to deny.");
 

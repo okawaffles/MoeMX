@@ -7,8 +7,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Set;
+import java.util.*;
 
 public class WarpsHelper {
     private static HashMap<String, Location> warps = new HashMap<String, Location>();
@@ -33,6 +32,11 @@ public class WarpsHelper {
             return null;
         }
     }
+
+    public static List<String> GetWarpList() {
+        return new ArrayList<>(warps.keySet());
+    }
+
     public static void LoadWarpsFromFile() {
         File warpf = new File(plg.getDataFolder(), "warps.yml");
         YamlConfiguration config = new YamlConfiguration();

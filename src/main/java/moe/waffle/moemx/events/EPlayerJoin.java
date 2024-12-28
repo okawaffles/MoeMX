@@ -2,8 +2,10 @@ package moe.waffle.moemx.events;
 
 import static moe.waffle.moemx.utils.Configuration.cfg;
 
+import com.google.gson.JsonObject;
 import moe.waffle.moemx.MoeMX;
 import moe.waffle.moemx.utils.ChatColorFormatter;
+import moe.waffle.moemx.utils.http.PostMessagesToURL;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -14,6 +16,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
 
 public class EPlayerJoin implements Listener {
     static MoeMX plg;
@@ -36,6 +39,14 @@ public class EPlayerJoin implements Listener {
 
             e.setJoinMessage(String.format(colorFormatted, playerName));
         }
+
+        CompletableFuture.runAsync(() -> {
+            // posting the message to a webserver
+            JsonObject object = new JsonObject();
+            object.addProperty("username", e.getPlayer().getName());
+            object.addProperty("type", "join");
+            PostMessagesToURL.PostMessage(object.toString());
+        });
 
         // send MOTD to player if enabled in config.
         if (!cfg.getBoolean("customize.motd.enabled")) return;

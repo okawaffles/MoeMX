@@ -19,6 +19,9 @@ public class CmdTpa implements CommandExecutor {
             return false;
         }
 
+        sender.sendMessage(ChatColor.DARK_GRAY + "Teleporting " + ChatColor.DARK_AQUA + from.getName() + ChatColor.DARK_GRAY + " to you...");
+        from.sendMessage(ChatColor.DARK_GRAY + "Your teleport request to " + ChatColor.DARK_AQUA + sender.getName() + ChatColor.DARK_GRAY + " was " + ChatColor.DARK_GREEN + "accepted" + ChatColor.DARK_GRAY + ".");
+
         TpRequestHelper.deleteRequest(Bukkit.getPlayer(sender.getName()), from, true);
 
         return true;

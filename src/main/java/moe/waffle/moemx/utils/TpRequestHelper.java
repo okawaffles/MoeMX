@@ -26,17 +26,10 @@ public class TpRequestHelper {
         return requests.get(to);
     }
     public static void deleteRequest(Player to, Player from, boolean accepted) {
-        if (requests.remove(to, from)) {
-            if (accepted) {
-                to.sendMessage(ChatColor.DARK_GRAY + "Teleporting " + ChatColor.DARK_AQUA + from.getName() + ChatColor.DARK_GRAY + " to you...");
-                from.sendMessage(ChatColor.DARK_GRAY + "Teleporting you to " + ChatColor.DARK_AQUA + to.getName() + ChatColor.DARK_GRAY + "...");
-
-                // get player location
-                Location plrLoc = to.getLocation();
-                from.teleport(plrLoc);
-            }
-        } else {
-            from.sendMessage(ChatColor.DARK_GRAY + "[!] Your teleport request to " + ChatColor.DARK_AQUA + to.getName() + ChatColor.DARK_GRAY + " was denied.");
+        if (requests.remove(to, from) && accepted) {
+            // get player location
+            Location plrLoc = to.getLocation();
+            from.teleport(plrLoc);
         }
     }
 }

@@ -20,8 +20,17 @@ public class CommandHelper {
         plugin.getCommand("warp").setExecutor(new CmdWarp());
         plugin.getCommand("createwarp").setExecutor(new CmdCreateWarp());
         plugin.getCommand("deletewarp").setExecutor(new CmdDeleteWarp());
-        plugin.getCommand("warplist").setExecutor(new CmdWarplist());
+        plugin.getCommand("warps").setExecutor(new CmdWarplist());
         plugin.getCommand("lastdeath").setExecutor(new CmdLastDeath());
         plugin.getCommand("back").setExecutor(new CmdBack());
+        plugin.getCommand("slimechunk").setExecutor(new CmdSlimechunk());
+
+        // messaging commands
+        plugin.getCommand("msg").setExecutor(new CmdMsg());
+        plugin.getCommand("w").setExecutor(new CmdMsg());
+        plugin.getCommand("whisper").setExecutor(new CmdMsg());
+        plugin.getCommand("tell").setExecutor(new CmdMsg());
+        plugin.getCommand("r").setExecutor(new CmdR());
+        plugin.getCommand("spy").setExecutor(new CmdSpy());
     }
 }

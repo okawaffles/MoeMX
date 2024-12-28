@@ -1,6 +1,7 @@
 package moe.waffle.moemx.utils;
 
 import moe.waffle.moemx.MoeMX;
+import moe.waffle.moemx.qol.NoNetheriteTemplate;
 import moe.waffle.moemx.utils.WarpsHelper;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -21,6 +22,9 @@ public class Configuration {
         // save default cfg
         plugin.saveDefaultConfig();
         WarpsHelper.RunFirstTimeSetup(plugin);
+
+        // register the nnt recipes after we load config
+        NoNetheriteTemplate.registerRecipes(plugin);
 
         // save motd (thanks chatgpt for helping me with this)
         InputStream is = MoeMX.class.getResourceAsStream("/motd.txt");

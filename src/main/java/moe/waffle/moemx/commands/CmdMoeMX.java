@@ -21,7 +21,7 @@ public class CmdMoeMX implements CommandExecutor {
 
         if (sender instanceof Player) {
             Player executor = (Player) sender;
-            executor.sendMessage(ChatColor.DARK_AQUA + "MoeMX v0.3.0-beta");
+            executor.sendMessage(ChatColor.DARK_AQUA + "MoeMX v0.7.0-beta");
             executor.sendMessage(ChatColor.DARK_AQUA + "Run \"/moemx reload\" to reload the configuration.");
         }
 

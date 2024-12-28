@@ -6,7 +6,7 @@
 
     <groupId>moe.waffle</groupId>
     <artifactId>MoeMX</artifactId>
-    <version>0.3.0-beta</version>
+    <version>0.7.0-beta</version>
     <packaging>jar</packaging>
 
     <name>MoeMX</name>

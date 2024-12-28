@@ -1,7 +1,7 @@
 name: MoeMX
 version: '${project.version}'
 main: moe.waffle.moemx.MoeMX
-api-version: 1.19
+api-version: 1.21
 prefix: MoeMX
 authors: [ okawaffles ]
 description: A bundle of helpful features for customization and QoL.
@@ -45,10 +45,14 @@ commands:
     description: Request to teleport to another player.
   tpa:
     usage: tpa
+    aliases:
+      - tpaccept
     permission: moemx.tpreq.accept
     description: Accept a teleport request.
   tpd:
     usage: tpd
+    aliases:
+      - tpdeny
     permission: moemx.tpreq.deny
     description: Deny a teleport request.
   warp:
@@ -63,8 +67,8 @@ commands:
     usage: deletewarp <name>
     permission: moemx.warp.delete
     description: Delete a warp.
-  warplist:
-    usage: warplist
+  warps:
+    usage: warps
     permission: moemx.warp.list
     description: List all warps.
   lastdeath:
@@ -75,3 +79,26 @@ commands:
     usage: back
     permission: moemx.back
     description: Teleport to your last location.
+  slimechunk:
+    usage: slimechunk
+    permission: moemx.slimechunk
+    description: Check whether the chunk you're standing in is a slime chunk.
+  msg:
+    usage: msg <player> <message>
+    description: Overrides Minecraft's default /msg command to add easy replying
+  w:
+    usage: w <player> <message>
+    description: Overrides Minecraft's default /w command to add easy replying
+  whisper:
+    usage: whisper <player> <message>
+    description: Overrides Minecraft's default /whisper command to add easy replying
+  tell:
+    usage: tell <player> <message>
+    description: Overrides Minecraft's default /tell command to add easy replying
+  r:
+    usage: r <message>
+    description: If you recently got/sent a message using /msg, you can easily reply with /r
+  spy:
+    usage: spy
+    permission: moemx.spy
+    description: Toggle spying on players' private messages

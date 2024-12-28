@@ -20,3 +20,12 @@ customize:
     # {player}  => Placeholder for the player name
     # {message} => Placeholder for the message contents
     format: "&8[&3{player}&8]: &7{message}"
+
+  extra:
+    # Creates a crafting recipe that lets you upgrade armor without needing a template
+    alternativeNetheriteRecipe: false
+
+  postMessages:
+    enabled: false
+    url: "https://bot.lilycatgirl.dev/okabot/minecraft"
+    key: "your_key_here"

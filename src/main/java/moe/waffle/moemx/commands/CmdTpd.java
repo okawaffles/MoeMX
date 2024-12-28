@@ -19,8 +19,12 @@ public class CmdTpd implements CommandExecutor {
             return false;
         }
 
+        sender.sendMessage(ChatColor.DARK_GRAY + "Rejected " + ChatColor.DARK_AQUA + from.getName() + ChatColor.DARK_GRAY + "'s teleport request.");
+
         TpRequestHelper.deleteRequest(Bukkit.getPlayer(sender.getName()), from, false);
-        
+
+        from.sendMessage(ChatColor.DARK_GRAY + "Your teleport request to " + ChatColor.DARK_AQUA + sender.getName() + ChatColor.DARK_GRAY + " was " + ChatColor.DARK_RED + "rejected" + ChatColor.DARK_GRAY + ".");
+
         return true;
     }
 }
