@@ -4,6 +4,7 @@ import static moe.waffle.moemx.utils.Configuration.cfg;
 
 import com.google.gson.JsonObject;
 import moe.waffle.moemx.MoeMX;
+import moe.waffle.moemx.qol.DetectAFK;
 import moe.waffle.moemx.utils.ChatColorFormatter;
 import moe.waffle.moemx.utils.http.PostMessagesToURL;
 import org.bukkit.Bukkit;
@@ -41,6 +42,8 @@ public class EPlayerJoin implements Listener {
         }
 
         CompletableFuture.runAsync(() -> {
+            DetectAFK.UpdateLastActivity(e.getPlayer());
+
             // posting the message to a webserver
             JsonObject object = new JsonObject();
             object.addProperty("username", e.getPlayer().getName());

@@ -31,7 +31,7 @@ public class DiscordHttpPostHandler implements HttpHandler {
 
             // send message
             String broadcast = ChatColorFormatter.FormatToChatColors(String.format(
-                "&8[&5%s via Discord&8]: &7%s", requestData.get("username").getAsString(), requestData.get("message").getAsString()
+                "&8[&5%s&8]: &7%s", requestData.get("username").getAsString(), requestData.get("message").getAsString()
             ));
             Bukkit.broadcastMessage(broadcast);
 

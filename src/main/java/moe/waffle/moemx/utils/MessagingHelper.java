@@ -1,5 +1,6 @@
 package moe.waffle.moemx.utils;
 
+import moe.waffle.moemx.qol.DetectAFK;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
@@ -10,6 +11,8 @@ public class MessagingHelper {
     private static HashMap<Player, Boolean> is_spying = new HashMap<Player, Boolean>();
 
     public static void MessagePlayer(Player from, Player to, String content) {
+        DetectAFK.UpdateLastActivity(from);
+
         // record who last messaged who, for the /r command
         last_messaged.put(from, to);
         last_messaged.put(to, from);
@@ -30,6 +33,8 @@ public class MessagingHelper {
     }
 
     public static void HandleReplying(Player from, String content) {
+        DetectAFK.UpdateLastActivity(from);
+
         if (!last_messaged.containsKey(from)) {
             from.sendMessage("&8[!] You haven't sent or received a message recently!");
             return;
@@ -46,6 +51,8 @@ public class MessagingHelper {
     }
 
     public static void ToggleSpying(Player plr) {
+        DetectAFK.UpdateLastActivity(plr);
+
         if (!is_spying.containsKey(plr) || !is_spying.get(plr)) {
             is_spying.put(plr, true);
             plr.sendMessage(ChatColor.DARK_GRAY + "Toggled message spying " + ChatColor.DARK_AQUA + "ON");

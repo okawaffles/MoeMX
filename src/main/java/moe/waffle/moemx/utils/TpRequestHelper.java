@@ -1,5 +1,6 @@
 package moe.waffle.moemx.utils;
 
+import moe.waffle.moemx.qol.DetectAFK;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -11,10 +12,13 @@ public class TpRequestHelper {
     static private HashMap<Player, Player> requests = new HashMap<Player, Player>();
 
     public static void CreateRequest(Player to, Player from) {
+        DetectAFK.UpdateLastActivity(to);
         requests.put(to, from);
     }
 
     public static boolean checkRequest(Player to, Player from) {
+        DetectAFK.UpdateLastActivity(to);
+
         // does the To player have any incoming requests?
         if (!requests.containsKey(to)) return false;
 
@@ -26,6 +30,8 @@ public class TpRequestHelper {
         return requests.get(to);
     }
     public static void deleteRequest(Player to, Player from, boolean accepted) {
+        DetectAFK.UpdateLastActivity(to);
+
         if (requests.remove(to, from) && accepted) {
             // get player location
             Location plrLoc = to.getLocation();

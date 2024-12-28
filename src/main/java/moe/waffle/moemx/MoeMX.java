@@ -1,18 +1,16 @@
 package moe.waffle.moemx;
 
-import moe.waffle.moemx.events.EPlayerDeath;
+import moe.waffle.moemx.events.*;
 import moe.waffle.moemx.qol.CanSleep;
+import moe.waffle.moemx.qol.DetectAFK;
 import moe.waffle.moemx.qol.NoNetheriteTemplate;
 import moe.waffle.moemx.utils.WarpTabCompleter;
 import moe.waffle.moemx.utils.WarpsHelper;
-import moe.waffle.moemx.events.EPlayerChat;
-import moe.waffle.moemx.events.EPlayerQuit;
 import moe.waffle.moemx.utils.CommandHelper;
 import moe.waffle.moemx.utils.http.MinimalHttpServer;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import static moe.waffle.moemx.utils.Configuration.*;
-import moe.waffle.moemx.events.EPlayerJoin;
 
 public final class MoeMX extends JavaPlugin {
     @Override
@@ -25,6 +23,8 @@ public final class MoeMX extends JavaPlugin {
         new EPlayerQuit(this);
         new EPlayerDeath(this);
         new EPlayerChat(this);
+        new EPlayerMove(this);
+        new EPlayerInteract(this);
         // also start the HTTP server for relaying discord messages
         try {
             MinimalHttpServer.CreateServer();
@@ -37,8 +37,9 @@ public final class MoeMX extends JavaPlugin {
         // register commands in CommandHelper.java
         CommandHelper.RegisterCommands(this);
 
-        // register the sleep checker
+        // register the sleep and afk checkers
         CanSleep.SchedleSleepCheckTask(this);
+        DetectAFK.Schedule(this);
 
         // tab completers
         getCommand("warp").setTabCompleter(new WarpTabCompleter());
