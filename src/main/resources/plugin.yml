@@ -102,3 +102,6 @@ commands:
     usage: spy
     permission: moemx.spy
     description: Toggle spying on players' private messages
+  afk:
+    usage: afk
+    description: Start/Stop being AFK

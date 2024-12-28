@@ -109,6 +109,8 @@ public class DetectAFK {
                 PostMessagesToURL.PostMessage(object.toString());
             });
         } else {
+            UpdateLastActivity(plr);
+
             Bukkit.broadcastMessage(ChatColor.DARK_AQUA + plr.getName() + ChatColor.DARK_GRAY + " is no longer AFK.");
 
             CompletableFuture.runAsync(() -> {

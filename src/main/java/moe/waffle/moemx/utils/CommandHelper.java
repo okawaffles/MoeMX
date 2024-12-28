@@ -32,5 +32,8 @@ public class CommandHelper {
         plugin.getCommand("tell").setExecutor(new CmdMsg());
         plugin.getCommand("r").setExecutor(new CmdR());
         plugin.getCommand("spy").setExecutor(new CmdSpy());
+
+        // afk
+        plugin.getCommand("afk").setExecutor(new CmdAFK());
     }
 }
