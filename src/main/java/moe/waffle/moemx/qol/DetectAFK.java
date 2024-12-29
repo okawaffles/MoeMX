@@ -89,14 +89,12 @@ public class DetectAFK {
      */
     public static void ManuallyToggleAFK(Player plr) {
         if (!isAFK.containsKey(plr)) {
-            // we set this to true because we will toggle later.
-            // this will default to false if the player doesn't
-            // exist in the hashmap.
-            isAFK.put(plr, true);
+            // make sure we don't get an exception if the player doesn't exist
+            isAFK.put(plr, false);
         }
 
         // toggle
-        isAFK.put(plr, false);
+        isAFK.put(plr, !isAFK.get(plr));
 
         if (isAFK.get(plr)) {
             Bukkit.broadcastMessage(ChatColor.DARK_AQUA + plr.getName() + ChatColor.DARK_GRAY + " is now AFK.");
