@@ -25,6 +25,7 @@ public final class MoeMX extends JavaPlugin {
         new EPlayerChat(this);
         new EPlayerMove(this);
         new EPlayerInteract(this);
+        new EGetAchievement(this);
         // also start the HTTP server for relaying discord messages
         try {
             MinimalHttpServer.CreateServer();
