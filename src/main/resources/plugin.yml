@@ -1,6 +1,6 @@
 name: MoeMX
 version: '${project.version}'
-main: moe.waffle.moemx.MoeMX
+main: dev.lilycatgirl.moemx.MoeMX
 api-version: 1.21
 prefix: MoeMX
 authors: [ okawaffles ]
