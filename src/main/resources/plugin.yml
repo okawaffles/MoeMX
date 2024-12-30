@@ -105,3 +105,10 @@ commands:
   afk:
     usage: afk
     description: Start/Stop being AFK
+  ec:
+    usage: ec
+    description: Open your ender chest
+  invsee:
+    usage: invsee <player>
+    description: See another player's inventory contents
+    permission: moemx.invsee
