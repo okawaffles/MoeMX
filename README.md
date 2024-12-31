@@ -1,6 +1,19 @@
+# Important!
+
+I am no longer maintaining this plugin for public use. 
+If you would like to use it, you're going to need to fork it and
+update it yourself. I would love for others to use this plugin,
+but because no one else uses it and due to the amount of
+personalization I have put into this plugin for my personal
+server, I have no incentive to maintain it for public use.
+
+If you'd like to help contribute still, go ahead.
+
+---
+
 # A bundle of helpful commands and features for QoL
 
-Current supported version: **Spigot 1.19.x**
+Current supported version: **Spigot 1.21.x**
 
 ## Why?
 I like Essentials and the commands that it provides, but as of recently, I don't enjoy the path they are taking with their plugin. So I made the stuff that I want myself.

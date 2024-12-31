@@ -38,7 +38,7 @@ public final class MoeMX extends JavaPlugin {
         CommandHelper.RegisterCommands(this);
 
         // register the sleep and afk checkers
-        CanSleep.SchedleSleepCheckTask(this);
+        CanSleep.ScheduleSleepCheckTask(this);
         DetectAFK.Schedule(this);
 
         // tab completers
