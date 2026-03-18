@@ -23,7 +23,18 @@ public class WarpsHelper {
     }
 
     public static boolean WarpExists(String name) {
-        return warps.containsKey(SanitizeWarpName(name));
+        return warps.containsKey(name);
+    }
+
+    public static String FindWarpName(String name) {
+        if (warps.containsKey(name)) return name;
+
+        String sanitizedName = SanitizeWarpName(name);
+        if (!sanitizedName.equals(name) && warps.containsKey(sanitizedName)) {
+            return sanitizedName;
+        }
+
+        return null;
     }
 
     public static void CreateNewWarp(String name, Location loc) {
@@ -32,7 +43,8 @@ public class WarpsHelper {
 
     public static void DeleteWarp(String name) {
         try {
-            warps.remove(SanitizeWarpName(name));
+            String warpName = FindWarpName(name);
+            if (warpName != null) warps.remove(warpName);
         } catch (Exception ex) {
             plg.getLogger().info("Didn't delete any warp since the name didn't exist in the HashMap.");
         }
@@ -40,7 +52,10 @@ public class WarpsHelper {
 
     public static Location GetWarp(String name) {
         try {
-            return warps.get(SanitizeWarpName(name));
+            String warpName = FindWarpName(name);
+            if (warpName == null) return null;
+
+            return warps.get(warpName);
         } catch (Exception ex) {
             return null;
         }
@@ -53,26 +68,18 @@ public class WarpsHelper {
     public static void LoadWarpsFromFile() {
         File warpf = new File(plg.getDataFolder(), "warps.yml");
         YamlConfiguration config = new YamlConfiguration();
-
-        warps.clear();
+        HashMap<String, Location> loadedWarps = new HashMap<String, Location>();
 
         try {
             config.load(warpf);
             Set<String> keys = config.getKeys(false);
             for (String key : keys) {
-                String sanitizedKey = SanitizeWarpName(key);
-                if (sanitizedKey.isEmpty()) {
-                    plg.getLogger().warning("Skipped loading a warp with an invalid name from warps.yml.");
-                    continue;
-                }
-
-                if (warps.containsKey(sanitizedKey) && !sanitizedKey.equals(key)) {
-                    plg.getLogger().warning("Found multiple warp names that normalize to '" + sanitizedKey + "'. Keeping the latest value.");
-                }
-
                 Location loc = (Location) config.get(key);
-                warps.put(sanitizedKey, loc);
+                loadedWarps.put(key, loc);
             }
+
+            warps.clear();
+            warps.putAll(loadedWarps);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -88,13 +95,7 @@ public class WarpsHelper {
 
         try {
             for (String key : warps.keySet()) {
-                String sanitizedKey = SanitizeWarpName(key);
-                if (sanitizedKey.isEmpty()) {
-                    plg.getLogger().warning("Skipped saving a warp with an invalid name.");
-                    continue;
-                }
-
-                config.set(sanitizedKey, warps.get(key));
+                config.set(key, warps.get(key));
             }
 
             config.save(warpf);

@@ -16,14 +16,14 @@ public class CmdDeleteWarp implements CommandExecutor {
             return true;
         }
 
-        String sanitizedWarpName = WarpsHelper.SanitizeWarpName(args[0]);
-        if (!WarpsHelper.IsValidWarpName(args[0])) {
-            sender.sendMessage(ChatColor.DARK_GRAY + "[!] Please supply a valid warp name!");
+        String warpName = WarpsHelper.FindWarpName(args[0]);
+        if (warpName == null) {
+            sender.sendMessage(ChatColor.DARK_GRAY + "[!] That warp doesn't exist!");
             return true;
         }
 
         WarpsHelper.DeleteWarp(args[0]);
-        sender.sendMessage(ChatColor.DARK_GRAY + "Deleted warp " + ChatColor.DARK_AQUA + sanitizedWarpName + ChatColor.DARK_GRAY + "!");
+        sender.sendMessage(ChatColor.DARK_GRAY + "Deleted warp " + ChatColor.DARK_AQUA + warpName + ChatColor.DARK_GRAY + "!");
 
         return true;
     }
