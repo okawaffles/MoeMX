@@ -10,16 +10,41 @@ import java.io.IOException;
 import java.util.*;
 
 public class WarpsHelper {
-    private static HashMap<String, Location> warps = new HashMap<String, Location>();
+    private static final HashMap<String, Location> warps = new HashMap<String, Location>();
+    private static final String WARP_NAME_PATTERN = "[^A-Za-z0-9_-]";
     private static JavaPlugin plg;
 
+    public static String SanitizeWarpName(String name) {
+        return name.replaceAll(WARP_NAME_PATTERN, "");
+    }
+
+    public static boolean IsValidWarpName(String name) {
+        return !SanitizeWarpName(name).isEmpty();
+    }
+
+    public static boolean WarpExists(String name) {
+        return warps.containsKey(name);
+    }
+
+    public static String FindWarpName(String name) {
+        if (warps.containsKey(name)) return name;
+
+        String sanitizedName = SanitizeWarpName(name);
+        if (!sanitizedName.equals(name) && warps.containsKey(sanitizedName)) {
+            return sanitizedName;
+        }
+
+        return null;
+    }
+
     public static void CreateNewWarp(String name, Location loc) {
-        warps.put(name, loc);
+        warps.put(SanitizeWarpName(name), loc);
     }
 
     public static void DeleteWarp(String name) {
         try {
-            warps.remove(name);
+            String warpName = FindWarpName(name);
+            if (warpName != null) warps.remove(warpName);
         } catch (Exception ex) {
             plg.getLogger().info("Didn't delete any warp since the name didn't exist in the HashMap.");
         }
@@ -27,7 +52,10 @@ public class WarpsHelper {
 
     public static Location GetWarp(String name) {
         try {
-            return warps.get(name);
+            String warpName = FindWarpName(name);
+            if (warpName == null) return null;
+
+            return warps.get(warpName);
         } catch (Exception ex) {
             return null;
         }
@@ -40,15 +68,18 @@ public class WarpsHelper {
     public static void LoadWarpsFromFile() {
         File warpf = new File(plg.getDataFolder(), "warps.yml");
         YamlConfiguration config = new YamlConfiguration();
+        HashMap<String, Location> loadedWarps = new HashMap<String, Location>();
 
         try {
             config.load(warpf);
             Set<String> keys = config.getKeys(false);
             for (String key : keys) {
                 Location loc = (Location) config.get(key);
-
-                warps.put(key, loc);
+                loadedWarps.put(key, loc);
             }
+
+            warps.clear();
+            warps.putAll(loadedWarps);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
