@@ -18,10 +18,24 @@ public class CmdCreateWarp implements CommandExecutor {
             return true;
         }
 
+        String sanitizedWarpName = WarpsHelper.SanitizeWarpName(args[0]);
+        if (!WarpsHelper.IsValidWarpName(args[0])) {
+            sender.sendMessage(ChatColor.DARK_GRAY + "[!] Warp names must include at least one letter, number, underscore, or dash!");
+            return true;
+        }
+
+        if (WarpsHelper.WarpExists(sanitizedWarpName)) {
+            sender.sendMessage(ChatColor.DARK_GRAY + "[!] A warp named " + ChatColor.DARK_AQUA + sanitizedWarpName + ChatColor.DARK_GRAY + " already exists!");
+            return true;
+        }
+
         Player self = Bukkit.getPlayer(sender.getName());
         Location warp = self.getLocation();
         WarpsHelper.CreateNewWarp(args[0], warp);
-        sender.sendMessage(ChatColor.DARK_GRAY + "Created new warp " + ChatColor.DARK_AQUA + args[0] + ChatColor.DARK_GRAY + "!");
+        if (!sanitizedWarpName.equals(args[0])) {
+            sender.sendMessage(ChatColor.DARK_GRAY + "[!] Removed unsupported characters. Using warp name " + ChatColor.DARK_AQUA + sanitizedWarpName + ChatColor.DARK_GRAY + ".");
+        }
+        sender.sendMessage(ChatColor.DARK_GRAY + "Created new warp " + ChatColor.DARK_AQUA + sanitizedWarpName + ChatColor.DARK_GRAY + "!");
 
         return true;
     }

@@ -18,6 +18,12 @@ public class CmdWarp implements CommandExecutor {
             return true;
         }
 
+        String sanitizedWarpName = WarpsHelper.SanitizeWarpName(args[0]);
+        if (!WarpsHelper.IsValidWarpName(args[0])) {
+            sender.sendMessage(ChatColor.DARK_GRAY + "[!] That warp doesn't exist!");
+            return true;
+        }
+
         Location warp = WarpsHelper.GetWarp(args[0]);
         if (warp == null) {
             sender.sendMessage(ChatColor.DARK_GRAY + "[!] That warp doesn't exist!");
@@ -26,7 +32,7 @@ public class CmdWarp implements CommandExecutor {
 
         Player self = Bukkit.getPlayer(sender.getName());
         self.teleport(warp);
-        self.sendMessage(ChatColor.DARK_GRAY + "Teleporting you to " + ChatColor.DARK_AQUA + args[0] + ChatColor.DARK_GRAY + "...");
+        self.sendMessage(ChatColor.DARK_GRAY + "Teleporting you to " + ChatColor.DARK_AQUA + sanitizedWarpName + ChatColor.DARK_GRAY + "...");
 
         return true;
     }
